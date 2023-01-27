@@ -1,0 +1,30 @@
+h1
+{
+	color:white;
+	font-size: 25px;
+}
+.paragraphe
+{
+	color: white;
+}
+
+.div1
+{
+	background: radial-gradient(rgba(54,47,47,0.116), rgba(10,2,2,2));
+	width: 350px;
+	height: 350px;
+	margin: 10% auto;
+}
+p a{
+	color: white;
+	text-decoration: none;
+
+}
+.btn
+{
+	border-radius: 20px;
+	margin-bottom: 19px; 
+}
+input{
+	border-radius: 5px;
+}
