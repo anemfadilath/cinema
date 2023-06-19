@@ -17,7 +17,7 @@ services:
     container_name: gestion_envoi-nginx
     restart: unless-stopped
     ports:
-      - 5000:3000
+      - 8000:80
     volumes:
       - ./:/var/www
       - ./docker-compose/nginx:/etc/nginx/conf.d/
@@ -27,13 +27,8 @@ services:
     image: mysql:5.7.37
     container_name: gestion_envoi-db
     restart: unless-stopped
-    environment:
-      MYSQL_DATABASE: compte
-      MYSQL_ROOT_PASSWORD: 
-      MYSQL_PASSWORD: 
-      MYSQL_USER: root
-      SERVICE_TAGS: dev
-      SERVICE_NAME: mysql
+    ports:
+      - 5000:5000
     volumes:
       - ./docker-compose/mysql:/docker-entrypoint-initdb.d
     networks:
