@@ -4,16 +4,7 @@ services:
     build:
       context: ./
       dockerfile: Dockerfile
-    image: gestion_envoi
-    container_name: gestion_envoi
-    restart: unless-stopped
-    working_dir: /php/src
-    #volumes:
-     ## - ./php/src
-  php-apache-environment:
-    container_name: php-apache
-    image: php:8.0-apache
-    volumes:
-      - ./php/src:/var/www/html/
     ports:
-      - 8000:80
+      - "8000:80"
+    volumes:
+      - ./src:/var/www

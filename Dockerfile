@@ -1,21 +1,11 @@
-FROM php:8.0-fpm
+FROM php:7.4-apache
 
-# Arguments defined in docker-compose.yml
-ARG user
-ARG uid
+COPY 000-default.conf /etc/apache2/sites-available/000-default.conf
+COPY start-apache /usr/local/bin
+RUN a2enmod rewrite
 
-# Install system dependencies
-RUN apt-get update && apt-get install -y \
-    git \
-    curl \
-    libpng-dev \
-    libonig-dev \
-    libxml2-dev \
-    zip \
-    unzip
+# Copy application source
+COPY src /var/www/
+RUN chown -R www-data:www-data /var/www
 
-# Clear cache
-RUN apt-get clean && rm -rf /var/lib/apt/lists/*
-
-# Install PHP extensions
-RUN docker-php-ext-install pdo_mysql mbstring exif pcntl bcmath gd
+CMD ["start-apache"]
